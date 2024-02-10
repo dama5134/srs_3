@@ -1,78 +1,85 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/screens/alertdiolog.dart';
-import 'package:flutter_application_1/screens/tabbar.dart';
+import 'package:flutter_application_2/menu.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: AlertScreen(),
+      home: HomePage(),
     );
   }
 }
 
-class AlertScreen extends StatelessWidget {
-  void _showAlert(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            'Election 2020',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 24.0,
-            ),
-          ),
-          content: Text('Will you vote for Trump'),
-          actions: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const tabbar()),
-                );
-              },
-              child: Text('Yes'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => alertdiolg()),
-                );
-                ;
-              },
-              child: Text('No'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter AlerDialog Example'),
+        title: Text('Flutter Moon'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                _showAlert(context);
-              },
-              child: Text('Press'),
+      body: ListView(
+        children: [
+          Container(
+            alignment: Alignment.center,
+            child: Text(
+              'Hello flutter from metanit.com',
+              style: TextStyle(fontSize: 24.0),
             ),
-          ],
-        ),
+          ),
+          SizedBox(height: 400.0),
+          Center(
+            child: Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                'Hello Flutter',
+                style: TextStyle(fontSize: 24.0),
+              ),
+            ),
+          ),
+          SizedBox(height: 400.0),
+          Center(
+            child: Container(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                'Текст слева по центру',
+                style: TextStyle(fontSize: 24.0),
+              ),
+            ),
+          ),
+          SizedBox(height: 400.0),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const menu()),
+                      );
+                    },
+                    child: const Text('Press')),
+                SizedBox(height: 20.0),
+                TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const menu()),
+                      );
+                    },
+                    child: const Text('Press'))
+              ],
+            ),
+          ),
+          SizedBox(height: 400.0),
+        ],
       ),
     );
   }
